@@ -1,0 +1,76 @@
+<div class="px-4 my-5 text-center">
+  <h1 class= "display-5 fw-bold">Submit Your Recipe</h1>
+  <div class="col-lg-6 mx-auto">
+    <p class = "lead">Share  your amazing recipes with thousands of developers across the globe. Fill our form to get started.</p>
+  </div>
+</div>
+
+
+<div class="row justify-content-center">
+
+  <% if(infoSubmitObj != ""){ %>
+    <div class="col-8 alert alert-success" role="alert">
+      <%= infoSubmitObj %>
+    </div>
+  <% } %>
+  <% if(infoErrorObj != ""){ %>
+    <div class="col-8 alert alert-danger" role="alert">
+      <%= infoErrorObj[0].message %>
+    </div>
+  <% } %>
+  <div class="col-8">
+    <form action="/submit-recipe" enctype="multipart/form-data" method="post">
+      <div class="row g-3">
+        <div class="col-12">
+          <label for="email" class = "form-label">Email</label>
+          <input type="email" name="email" class = "form-control" autocomplete="off">
+        </div>
+
+        <div class="col-12">
+          <label for="name" class = "form-label">Recipe Name</label>
+          <input type="text" name="name" class = "form-control" autocomplete="off">
+        </div>
+
+        <div class="col-12">
+          <label for="description" class = "form-label">Description</label>
+          <textarea name="description" rows="4" cols="30" id="description" class = "form-control"></textarea>
+        </div>
+
+        <div class="col-12">
+          <label for="ingredients" class = "form-label">Ingredients</label>
+          <small>Example: Ice</small>
+          <div class="ingredientList">
+            <div class="ingredientsDiv mb-1">
+              <input type="text" name="ingredients" class = "form-control">
+            </div>
+          </div>
+        </div>
+
+        <div class="col-12">
+          <button type="button" class = "btn btn-outline-light" id= "addIngredientsBtn">+ Ingredient</button>
+        </div>
+
+        <div class="col-12">
+          <label for="category">Select Category</label>
+          <select class="form-select form-control" name="category" aria-label="Category">
+            <option selected>Select Category</option>
+            <option value="Thai">Thai</option>
+            <option value="American">American</option>
+            <option value="Chinese">Chinese</option>
+            <option value="Mexican">Mexican</option>
+            <option value="Indian">Indian</option>
+          </select>
+        </div>
+
+        <div class="col-12">
+          <label for="image">Produt Image</label>
+          <input type="file" name="image" class="form-control" accept="/image/*">
+        </div>
+
+        <div class="col-12">
+          <button type="submit" class = "btn btn-outline-light">Submit Recipe</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
